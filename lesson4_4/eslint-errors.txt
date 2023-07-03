@@ -1,0 +1,11 @@
+linebreak-style
+indent
+no-var
+eqeqeq
+no-undef
+no-trailing-spaces
+no-plusplus
+no-console
+no-return-assign
+no-multiple-empty-lines
+eol-last
