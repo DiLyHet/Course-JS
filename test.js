@@ -1,8 +1,3 @@
-function run() {
-    var a = 0,
-        b = 1;
-
-    if (a == b) {
-        return c;
-    }
-}
+it('17 и в африке 17',()=>{
+  expect(17).toEqual(17);
+})
