@@ -1,5 +1,5 @@
 export function getSquaredArray(array) {
-    array.map(num => num ** 2);
+    array.map(num => num - num);
 };
 
 export function getOddNumbers(array) {
