@@ -1,3 +1,12 @@
-it('17 и в африке 17',()=>{
-  expect(17).toEqual(17);
-})
+'use strict';
+let text = 'Just learn it';
+
+export function sendMessage(name) {
+  return `${name}, ${text}! Your Gromcode`;
+};
+
+export function setMessage(text) {
+  return sendMessage(name);
+};
+
+console.log(sendMessage('Ann'));
