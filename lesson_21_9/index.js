@@ -7,3 +7,5 @@ export function finishList() {
     special.before(li.textContent = '4');
     special.after(li.textContent = '6');
 }
+
+finishList();
