@@ -7,3 +7,5 @@ export function finishForm() {
     login.setAttribute('type', 'text');
     password.setAttribute('type', 'password');
 }
+
+finishForm();
