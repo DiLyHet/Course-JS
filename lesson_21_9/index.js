@@ -1,4 +1,4 @@
-export function finishList() {
+ function finishList() {
     const ul = document.querySelector('.list');
     const special = document.querySelector('.special');
 
