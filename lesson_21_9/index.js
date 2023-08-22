@@ -1,9 +1,20 @@
 export function finishList() {
-    const li = document.createElement('li');
     const ul = document.querySelector('.list');
     const special = document.querySelector('.special');
-    ul.prepend(li.textContent = '1');
-    ul.append(li.textContent = '8');
-    special.before(li.textContent = '4');
-    special.after(li.textContent = '6');
+
+    const li1 = document.createElement('li');
+    li1.textContent = '1';
+    ul.prepend(li1);
+
+    const li2 = document.createElement('li');
+    li2.textContent = '8';
+    ul.append(li2);
+
+    const li3 = document.createElement('li');
+    li3.textContent = '4';
+    special.before(li3);
+
+    const li4 = document.createElement('li');
+    li4.textContent = '6';
+    special.after(li4);
 }
