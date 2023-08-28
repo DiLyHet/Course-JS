@@ -33,9 +33,45 @@ const clearEventsList = () => {
 const clearBtn = document.querySelector('.clear-btn');
 clearBtn.addEventListener('click', clearEventsList);
 
-const attachHandlersEvent = () => {
-    logTarget.stopImmediatePropagation();
+
+const toggleHandlers = () => {
+    handlersEnabled = !handlersEnabled;
+    updateHandlerStatus();
 }
 
-const attachEvent = document.querySelector('.attach-handlers-btn');
-attachEvent.addEventListener('click', attachHandlersEvent);
+const updateHandlerStatus = () => {
+    const attachBtn = document.querySelector('.attach-handlers-btn');
+    const removeBtn = document.querySelector('.remove-handlers-btn');
+
+    if (handlersEnabled) {
+        divElem.addEventListener('click', logGreyDiv, true);
+        divElem.addEventListener('click', logGreenDiv);
+
+        pElem.addEventListener('click', logGreyP, true);
+        pElem.addEventListener('click', logGreenP);
+
+        spanElem.addEventListener('click', logGreySpan, true);
+        spanElem.addEventListener('click', logGreenSpan);
+
+        attachBtn.style.backgroundColor = 'green';
+        removeBtn.style.backgroundColor = '';
+    } else {
+        divElem.removeEventListener('click', logGreyDiv, true);
+        divElem.removeEventListener('click', logGreenDiv);
+
+        pElem.removeEventListener('click', logGreyP, true);
+        pElem.removeEventListener('click', logGreenP);
+
+        spanElem.removeEventListener('click', logGreySpan, true);
+        spanElem.removeEventListener('click', logGreenSpan);
+
+        attachBtn.style.backgroundColor = '';
+        removeBtn.style.backgroundColor = 'red';
+    }
+}
+
+const attachBtn = document.querySelector('.attach-handlers-btn');
+attachBtn.addEventListener('click', toggleHandlers);
+
+const removeBtn = document.querySelector('.remove-handlers-btn');
+removeBtn.addEventListener('click', toggleHandlers);
