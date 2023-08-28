@@ -1,6 +1,7 @@
 const divElem = document.querySelector('.rect_div');
 const pElem = document.querySelector('.rect_p');
 const spanElem = document.querySelector('.rect_span');
+let handlersEnabled = true;
 
 const logTarget = (text, color) => {
     const eventsListElem = document.querySelector('.events-list');
@@ -53,8 +54,6 @@ const updateHandlerStatus = () => {
         spanElem.addEventListener('click', logGreySpan, true);
         spanElem.addEventListener('click', logGreenSpan);
 
-        attachBtn.style.backgroundColor = 'green';
-        removeBtn.style.backgroundColor = '';
     } else {
         divElem.removeEventListener('click', logGreyDiv, true);
         divElem.removeEventListener('click', logGreenDiv);
@@ -64,9 +63,6 @@ const updateHandlerStatus = () => {
 
         spanElem.removeEventListener('click', logGreySpan, true);
         spanElem.removeEventListener('click', logGreenSpan);
-
-        attachBtn.style.backgroundColor = '';
-        removeBtn.style.backgroundColor = 'red';
     }
 }
 
