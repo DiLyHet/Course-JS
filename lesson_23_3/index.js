@@ -22,7 +22,7 @@ const tasks = [
       checkbox.setAttribute('type', 'checkbox');
       checkbox.checked = done;
       checkbox.classList.add('list__item-checkbox');
-      checkbox.addEventListener('change', () => {
+      checkbox.addEventListener('click', () => {
         updateTaskStatus(id, checkbox.checked);
       });
   
