@@ -12,9 +12,25 @@ function onCounterChange(elem) {
 
     const oldValue = Number(counterValueElem.textContent);
 
-    counterValueElem.textContent = action === 'decrease'
+    const newValue = action === 'decrease'
         ? oldValue - 1
         : oldValue + 1;
+
+    localStorage.setItem('counterValue', newValue);
+
+    counterValueElem.textContent = newValue;
 };
 
 counterElem.addEventListener('click', onCounterChange);
+
+function onStorageChange(elem) {
+    counterValueElem.textContent = elem.newValue;
+};
+
+window.addEventListener('storage', onStorageChange);
+
+function onDocumentLoaded() {
+    counterValueElem.textContent = localStorage.getItem('counterValue') || 0;
+};
+
+document.addEventListener('DOMContentLoaded', onDocumentLoaded);
