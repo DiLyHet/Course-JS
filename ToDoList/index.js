@@ -56,7 +56,7 @@ let tasks = [];
     tasks = JSON.parse(window.localStorage.getItem('task'));
     renderTasks(tasks);
   });
-  
+
   function updateStorageHandler(e) {
     if(e.key === 'task'){
     tasks = JSON.parse(window.localStorage.getItem('task'));
@@ -68,6 +68,7 @@ let tasks = [];
     const taskToUpdate = tasks.find((task) => task.id === id);
     if (taskToUpdate) {
       taskToUpdate.done = done;
+      window.localStorage.setItem('task', JSON.stringify(tasks));
       renderTasks(tasks);
     }
   }
