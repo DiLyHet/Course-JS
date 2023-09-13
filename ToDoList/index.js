@@ -54,7 +54,7 @@ let tasks = [];
   window.addEventListener('storage', updateStorageHandler);
   window.addEventListener('DOMContentLoaded', () => {
     let tempTasks = JSON.parse(window.localStorage.getItem('tasksList'));
-    if(tempTasks !== null){
+    if (tempTasks !== null) {
     tasks = tempTasks;
    
     renderTasks(tasks);}
@@ -77,4 +77,3 @@ let tasks = [];
   }
   
   renderTasks(tasks);
-  
