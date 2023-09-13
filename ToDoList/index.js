@@ -45,7 +45,7 @@ let tasks = [];
       tasks.push(newTask);
       idCounter++;
       
-      window.localStorage.setItem('task', JSON.stringify(tasks));
+      window.localStorage.setItem('tasksList', JSON.stringify(tasks));
       renderTasks(tasks);
       inputElem.value = '';
     }
@@ -53,13 +53,16 @@ let tasks = [];
 
   window.addEventListener('storage', updateStorageHandler);
   window.addEventListener('DOMContentLoaded', () => {
-    tasks = JSON.parse(window.localStorage.getItem('task'));
-    renderTasks(tasks);
+    let tempTasks = JSON.parse(window.localStorage.getItem('tasksList'));
+    if(tempTasks !== null){
+    tasks = tempTasks;
+   
+    renderTasks(tasks);}
   });
 
   function updateStorageHandler(e) {
-    if(e.key === 'task'){
-    tasks = JSON.parse(window.localStorage.getItem('task'));
+    if(e.key === 'tasksList'){
+    tasks = JSON.parse(window.localStorage.getItem('tasksList'));
     renderTasks(tasks);
   }
   }
@@ -68,7 +71,7 @@ let tasks = [];
     const taskToUpdate = tasks.find((task) => task.id === id);
     if (taskToUpdate) {
       taskToUpdate.done = done;
-      window.localStorage.setItem('task', JSON.stringify(tasks));
+      window.localStorage.setItem('tasksList', JSON.stringify(tasks));
       renderTasks(tasks);
     }
   }
