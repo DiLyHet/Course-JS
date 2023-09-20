@@ -15,14 +15,13 @@ export const addImage = (imgSrc, callback) => {
     imgElem.addEventListener('error', () => callback('Image load is failed'));
   };
   
-  const onImageLoaded = (error, imgDimensions) => {
+  const onImageLoaded = (error) => {
     if (error) {
       console.log(error);
       return;
     }
   
-    const { width, height } = imgDimensions;
     const sizeElem = document.querySelector('.image-size');
   
-    sizeElem.textContent = `${width} x ${height}`;
+    sizeElem.textContent = `${imgElem.width} x ${imgElem.height}`;
   };
