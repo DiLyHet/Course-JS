@@ -1,24 +1,31 @@
 import { renderTasks } from "./renderTasks.js";
-
+import { apiEndPoint } from "./index.js";
 export let tasks = [];
 
-window.addEventListener('storage', updateStorageHandler);
+
 window.addEventListener('DOMContentLoaded', () => {
-    let tempTasks = JSON.parse(window.localStorage.getItem('tasksList'));
-    if (tempTasks !== null) {
-        SetTasks(tempTasks);
+  fetch(apiEndPoint, {
+  method: 'GET',
+  headers: {'content-type':'application/json'},
+}).then(res => {
+  if (res.ok) {
+      res.json().then(result=>{
+        SetTasks(result);
         renderTasks(tasks);
-    }
+      });
+  }
+  
+}).then(tasks => {
+  
+}).catch(error => {
+  console.error("Request failed");
+})
+       
+    
 });
 export function SetTasks(newTasks){
     tasks = newTasks;
 }
 export function AddTask(task){
     tasks.push(task);
-}
-function updateStorageHandler(e) {
-    if (e.key === 'tasksList') {
-        SetTasks(JSON.parse(window.localStorage.getItem('tasksList')));
-        renderTasks(tasks);
-    }
 }

@@ -1,5 +1,5 @@
 import { renderTasks } from "./renderTasks.js";
-import { inputElem, idCounter, addIdCounter} from "./index.js";
+import { inputElem, idCounter, addIdCounter, apiEndPoint } from "./index.js";
 import { tasks, AddTask } from "./storage.js";
 
 export function createNewTask() {
@@ -7,10 +7,25 @@ export function createNewTask() {
 
     if (taskText !== '') {
         const newTask = { id: idCounter, text: taskText, done: false };
-        AddTask(newTask);
-        addIdCounter();
-        window.localStorage.setItem('tasksList', JSON.stringify(tasks));
-        renderTasks(tasks);
+        
+        fetch(apiEndPoint, {
+            method: 'POST',
+            headers: {'content-type':'application/json'},
+            body: JSON.stringify(newTask)
+          }).then(res => {
+            if (res.ok) {
+            
+                AddTask(newTask);
+                addIdCounter();
+                renderTasks(tasks);
+            }
+           
+          }).then(tasks => {
+            
+          }).catch(error => {
+            console.error("Request failed");
+          })
+    
         inputElem.value = '';
     }
 }
