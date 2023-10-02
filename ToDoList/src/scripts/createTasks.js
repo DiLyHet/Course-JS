@@ -14,10 +14,12 @@ export function createNewTask() {
             body: JSON.stringify(newTask)
           }).then(res => {
             if (res.ok) {
-            
-                AddTask(newTask);
-                addIdCounter();
-                renderTasks(tasks);
+                res.json().then(result=>{
+                    AddTask(result);
+                    addIdCounter();
+                    renderTasks(tasks);
+                });
+                
             }
            
           }).then(tasks => {

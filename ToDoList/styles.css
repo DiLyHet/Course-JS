@@ -34,6 +34,7 @@
   .list__item {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     height: 40px;
     border-radius: 8px;
     background-color: wheat;
@@ -52,6 +53,11 @@
   
   .list__item-checkbox {
     margin-right: 8px;
+  }
+
+  .list__item-label {
+    display: flex;
+    flex-grow: 1;
   }
   
   .btn {
@@ -74,4 +80,15 @@
     border: 3px solid #ccc;
     border-radius: 8px;
     flex: 1;
+  }
+
+  .list__item-delete {
+    display: flex;
+    border: none;
+    background-color: wheat;
+    opacity: 0.5;
+  }
+
+  .list__item-delete:hover {
+    opacity: 1;
   }
