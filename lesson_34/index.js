@@ -1,5 +1,7 @@
+const baseUrl = 'https://651be3e0194f77f2a5af0850.mockapi.io/api/v1/users';
+
 export function getUsersList() {
-    fetch('https://651be3e0194f77f2a5af0850.mockapi.io/api/v1/users', {
+    fetch(baseUrl, {
       method: 'GET',
       headers: { 'content-type': 'application/json' },
     })
@@ -13,7 +15,7 @@ export function getUsersList() {
   }
   
   export function getUserById(userId) {
-    fetch(`https://651be3e0194f77f2a5af0850.mockapi.io/api/v1/users/${userId}`, {
+    fetch(`${baseUrl}/${userId}`, {
       method: 'GET',
       headers: { 'content-type': 'application/json' },
     })
@@ -29,7 +31,7 @@ export function getUsersList() {
   }
   
   export function createUser(userData) {
-    fetch('https://651be3e0194f77f2a5af0850.mockapi.io/api/v1/users', {
+    fetch(baseUrl, {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(userData),
@@ -46,7 +48,7 @@ export function getUsersList() {
   }
   
   export function deleteUser(userId) {
-    fetch(`https://651be3e0194f77f2a5af0850.mockapi.io/api/v1/users/${userId}`, {
+    fetch(`${baseUrl}/${userId}`, {
       method: 'DELETE',
     })
       .then(res => {
@@ -61,7 +63,7 @@ export function getUsersList() {
   }
   
   export function updateUser(userId, userData) {
-    fetch(`https://651be3e0194f77f2a5af0850.mockapi.io/api/v1/users/${userId}`, {
+    fetch(`${baseUrl}/${userId}`, {
       method: 'PUT',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(userData),
