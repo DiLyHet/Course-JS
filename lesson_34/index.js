@@ -15,7 +15,7 @@ export function getUserById(userId) {
 export function createUser(userData) {
     return fetch(baseUrl, {
         method: 'POST',
-        headers: { 'content-type': 'application/json' },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(userData),
     })
 }
@@ -30,7 +30,7 @@ export function deleteUser(userId) {
 export function updateUser(userId, userData) {
     return fetch(`${baseUrl}/${userId}`, {
         method: 'PUT',
-        headers: { 'content-type': 'application/json' },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(userData),
     })
 }
