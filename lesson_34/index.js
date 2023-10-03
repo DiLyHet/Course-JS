@@ -20,13 +20,17 @@ export function createUser(userData) {
 }
 
 export function deleteUser(userId) {
-    return fetch(`${baseUrl}/${userId}`)
+    return fetch(`${baseUrl}/${userId}`, {
+        method: 'DELETE',
+        headers: { 'content-type': 'application/json' }
+    })
 }
 
 
 export function updateUser(userId, userData) {
     return fetch(`${baseUrl}/${userId}`, {
         method: 'PUT',
+        headers: { 'content-type': 'application/json' },
         body: JSON.stringify(userData),
     })
 }
