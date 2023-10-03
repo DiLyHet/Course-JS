@@ -30,7 +30,7 @@ export function deleteUser(userId) {
 export function updateUser(userId, userData) {
     return fetch(`${baseUrl}/${userId}`, {
         method: 'PUT',
-        headers: { 'content-type': 'application/json' },
+        headers: {'content-type':'application/json'},
         body: JSON.stringify(userData),
     })
 }
