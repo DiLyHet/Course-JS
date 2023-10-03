@@ -17,15 +17,10 @@ export function createUser(userData) {
         method: 'POST',
         body: JSON.stringify(userData),
     })
-        .then(function (response) {
-            return response.json();
-        });
 }
 
 export function deleteUser(userId) {
-    return fetch(`${baseUrl}/${userId}`).then(function (response) {
-        return response.json();
-    });
+    return fetch(`${baseUrl}/${userId}`)
 }
 
 
@@ -34,7 +29,4 @@ export function updateUser(userId, userData) {
         method: 'PUT',
         body: JSON.stringify(userData),
     })
-        .then(function (response) {
-            return response.json();
-        });
 }
