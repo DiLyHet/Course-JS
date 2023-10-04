@@ -21,16 +21,18 @@ const onSearchUser = () => {
     fetchUserData(userName)
         .then(userData => {
             renderUserData(userData);
-            return userData.repos_usl;
+            return userData.repos_url;
         })
         .then(url => fetchRepositories(url))
         .then(reposList => {
             renderRepos(reposList);
-            hideSpinner();
         })
         .catch(err => {
             hideSpinner();
             alert(err.message);
+        })
+        .finally(() => {
+            hideSpinner();
         });
 };
 

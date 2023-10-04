@@ -5,14 +5,16 @@ export const cleanReposList = () => {
 };
 
 export const renderRepos = reposList => {
-    const reposListElems = reposList
-        .map(({ name }) => {
-            const listElem = document.createElement('li');
-            listElem.classList.add('repo-list__item');
-            listElem.textContent = name;
+    const reposListElem = document.querySelector('.repo-list');
 
-            return listElem;
-        });
-    listElem.innerHTML = '';
-    listElem.append(...reposListElems);
+    const reposListElems = reposList.map(({ name }) => {
+        const listItemElem = document.createElement('li');
+        listItemElem.classList.add('repo-list__item');
+        listItemElem.textContent = name;
+
+        return listItemElem;
+    });
+
+    reposListElem.innerHTML = '';
+    reposListElem.append(...reposListElems);
 };
