@@ -14,8 +14,7 @@ let userData = {
 }
 
 function registration(userData) {
-    if (form.reportValidity() === true) {
-
+    checkValidation();
         fetch(api, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -29,10 +28,6 @@ function registration(userData) {
                 throw new Error('Registration failed');
             }
         })
-    } else {
-        console.log(ghj);
-    }
-
 }
 
 emailInput.addEventListener('change', function () {
@@ -53,15 +48,15 @@ passwordInput.addEventListener('change', function () {
     checkValidation();
 });
 
-// function checkValidation() {
-//     if (form.reportValidity()) {
-//         button.removeAttribute('disabled');
-//     } else {
-//         button.setAttribute('disabled', 'disabled');
-//     }
-// }
-// 
-// onsubmit = function onFormSubmit(event) {
-//     event.preventDefault();
-//     registration(userData);
-// }
+function checkValidation() {
+    if (form.reportValidity()) {
+        button.removeAttribute('disabled');
+    } else {
+        button.setAttribute('disabled', 'disabled');
+    }
+}
+
+onsubmit = function onFormSubmit(event) {
+    event.preventDefault();
+    registration(userData);
+}
