@@ -5,43 +5,29 @@ const passwordInput = document.querySelector('input[type="password"]');
 const form = document.querySelector('.login-form');
 const button = document.querySelector('.submit-button');
 
-let userData = {
-    email: "",
-    name: "",
-    password: "",
-}
 
-function registration(userData) {
+
+function registration() {
     checkValidation();
-        fetch(api, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(userData)
-        }).then(res => {
-            console.log(JSON.stringify(userData));
-            if (res.ok) {
-                res.json().then(result => alert(JSON.stringify(result)));
-                form.reset();
-                checkValidation();
-            } else {
-                throw new Error('Registration failed');
-            }
-        })
+    const formElem = document.querySelector('.login-form');
+    const formData = Object.fromEntries(new FormData(formElem));
+    fetch(api, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+    }).then(res => {
+        console.log(JSON.stringify(formData));
+        if (res.ok) {
+            res.json().then(result => alert(JSON.stringify(result)));
+            form.reset();
+            checkValidation();
+        } else {
+            throw new Error('Registration failed');
+        }
+    })
 }
-
-emailInput.addEventListener('keyup', function () {
-    if (emailInput.value.trim() != '')
-        userData.email = emailInput.value.trim();
-});
-
-nameInput.addEventListener('keyup', function () {
-    if (emailInput.value.trim() != '')
-        userData.name = nameInput.value.trim();
-});
 
 passwordInput.addEventListener('keyup', function () {
-    if (emailInput.value.trim() != '')
-        userData.password = passwordInput.value.trim();
     checkValidation();
 });
 
@@ -55,5 +41,7 @@ function checkValidation() {
 
 onsubmit = function onFormSubmit(event) {
     event.preventDefault();
-    registration(userData);
+    registration();
 }
+
+
