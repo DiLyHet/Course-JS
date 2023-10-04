@@ -5,43 +5,53 @@ const passwordInput = document.querySelector('input[type="password"]');
 const form = document.querySelector('.login-form');
 const button = document.querySelector('.submit-button');
 
+function registration(formData) {
+  return fetch(api, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(formData)
+  });
+}
 
+const clearForm = () => {
+  form.reset();
+  onInputChange();
+};
 
-function registration() {
-    checkValidation();
-    const formElem = document.querySelector('.login-form');
-    const formData = Object.fromEntries(new FormData(formElem));
-    fetch(api, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
-    }).then(res => {
-        console.log(JSON.stringify(formData));
-        if (res.ok) {
-            res.json().then(result => alert(JSON.stringify(result)));
-            form.reset();
-            checkValidation();
-        } else {
-            throw new Error('Registration failed');
-        }
+const onError = error => {
+  console.error(error);
+  alert('Error occurred during registration');
+};
+
+const onSubmit = event => {
+  event.preventDefault();
+  const formData = Object.fromEntries(new FormData(form));
+
+  registration(formData)
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error('Registration failed');
+      }
     })
+    .then(data => {
+      alert(JSON.stringify(data));
+      clearForm();
+    })
+    .catch(onError);
 }
 
-passwordInput.addEventListener('keyup', function () {
-    checkValidation();
-});
+const onInputChange = () => {
+  const isValidForm = form.checkValidity();
+  if (isValidForm) {
+    button.removeAttribute('disabled');
+  } else {
+    button.setAttribute('disabled', true);
+  }
+};
 
-function checkValidation() {
-    if (form.reportValidity()) {
-        button.removeAttribute('disabled');
-    } else {
-        button.setAttribute('disabled', 'disabled');
-    }
-}
-
-onsubmit = function onFormSubmit(event) {
-    event.preventDefault();
-    registration();
-}
-
-
+emailInput.addEventListener('input', onInputChange);
+passwordInput.addEventListener('input', onInputChange);
+nameInput.addEventListener('input', onInputChange);
+form.addEventListener('submit', onSubmit);
