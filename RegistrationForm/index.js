@@ -53,13 +53,13 @@ passwordInput.addEventListener('change', function () {
     checkValidation();
 });
 
-function checkValidation() {
-    if (form.reportValidity()) {
-        button.removeAttribute('disabled');
-    } else {
-        button.setAttribute('disabled', 'disabled');
-    }
-}
+// function checkValidation() {
+//     if (form.reportValidity()) {
+//         button.removeAttribute('disabled');
+//     } else {
+//         button.setAttribute('disabled', 'disabled');
+//     }
+// }
 
 onsubmit = function onFormSubmit(event) {
     event.preventDefault();
