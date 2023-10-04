@@ -5,8 +5,6 @@ const passwordInput = document.querySelector('input[type="password"]');
 const form = document.querySelector('.login-form');
 const button = document.querySelector('.submit-button');
 
-
-
 let userData = {
     email: "",
     name: "",
@@ -24,25 +22,24 @@ function registration(userData) {
             if (res.ok) {
                 res.json().then(result => alert(JSON.stringify(result)));
                 form.reset();
+                checkValidation();
             } else {
                 throw new Error('Registration failed');
             }
         })
 }
 
-emailInput.addEventListener('change', function () {
+emailInput.addEventListener('keyup', function () {
     if (emailInput.value.trim() != '')
         userData.email = emailInput.value.trim();
-    checkValidation();
 });
 
-nameInput.addEventListener('change', function () {
+nameInput.addEventListener('keyup', function () {
     if (emailInput.value.trim() != '')
         userData.name = nameInput.value.trim();
-    checkValidation();
 });
 
-passwordInput.addEventListener('change', function () {
+passwordInput.addEventListener('keyup', function () {
     if (emailInput.value.trim() != '')
         userData.password = passwordInput.value.trim();
     checkValidation();
