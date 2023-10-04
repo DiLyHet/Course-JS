@@ -60,8 +60,8 @@ passwordInput.addEventListener('change', function () {
 //         button.setAttribute('disabled', 'disabled');
 //     }
 // }
-
-onsubmit = function onFormSubmit(event) {
-    event.preventDefault();
-    registration(userData);
-}
+// 
+// onsubmit = function onFormSubmit(event) {
+//     event.preventDefault();
+//     registration(userData);
+// }
