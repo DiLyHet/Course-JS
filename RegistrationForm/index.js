@@ -20,7 +20,7 @@ function registration(userData) {
         }).then(res => {
             console.log(JSON.stringify(userData));
             if (res.ok) {
-                res.json().then(result => alert(JSON.stringify(result)));
+                res.json().then(result => alert(result));
                 form.reset();
                 checkValidation();
             } else {
